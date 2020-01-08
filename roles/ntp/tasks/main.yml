@@ -1,0 +1,34 @@
+---
+- name: Install NTPD
+  apt:
+    name: ntp
+    state: present
+    update_cache: true
+
+- name: Copy NTPD configuration
+  template:
+    src: '{{ fname }}.conf.j2'
+    dest: /etc/ntp.conf
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Stop NTPD
+  service:
+    name: ntp
+    state: stopped
+
+- name: Force clock update on server
+  when: inventory_hostname in groups['ntp_server']
+  shell: ntpd -gq
+  notify:
+    - Start NTPD
+
+- meta: flush_handlers
+
+- name: Force clock update on clients
+  when: inventory_hostname not in groups['ntp_server']
+  shell: ntpd -gq
+  notify:
+    - Start NTPD
+# tasks file for ntp

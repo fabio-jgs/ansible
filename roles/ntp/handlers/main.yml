@@ -1,0 +1,6 @@
+---
+- name: Start NTPD
+  service:
+    name: ntp
+    state: started
+# handlers file for ntp

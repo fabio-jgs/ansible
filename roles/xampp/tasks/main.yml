@@ -1,0 +1,16 @@
+- name: Copiar xampp portable
+  win_copy:
+    src: xampp.zip
+    dest: C:\temp\
+
+- name: extrair xampp portable
+  win_unzip:
+    src: C:\temp\xampp.zip
+    dest: C:\
+
+- name: Criar atalho xampp portable
+  win_copy:
+     src: files/xampp.lnk
+     dest: c:\users\public\desktop\
+
+

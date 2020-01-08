@@ -1,0 +1,10 @@
+---
+- hosts: linux
+  roles:
+    - oefenweb.vim
+
+- hosts: windows
+  roles:
+#    - desligamento_windows
+    - git
+    - xampp

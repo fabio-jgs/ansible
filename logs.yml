@@ -1,0 +1,4 @@
+---
+- hosts: logs
+  roles:
+    - syslog

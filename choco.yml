@@ -1,0 +1,45 @@
+- hosts: windows
+  roles:
+    - papel_de_parede_e_icones_lab             
+  gather_facts: yes
+  tasks:
+    - win_chocolatey:
+        name: 
+        - procexp
+        - git 
+        - googlechrome
+        - flashplayerplugin
+        - jre8
+        - firefox
+        - 7zip.install
+        - notepadplusplus.install
+        - vlc
+        - winscp.portable
+        - cutepdf
+        - foxitreader
+
+        state: present
+    - win_chocolatey:
+            name: pdfxchangeeditor
+            install_args: 
+            - /NoUpdater 
+              #            - /NoViewInBrowsers
+            state: absent
+    - win_chocolatey:
+            name: mysql.workbench
+            state: present
+    - win_chocolatey:
+            name: arduino
+            state: present
+    - win_chocolatey:
+            name: cmaptools
+            state: present
+
+    - name: Change the hostname to sample-hostname
+      win_hostname:
+        name: somente-teste
+      register: res
+
+    - name: Reboot
+      win_reboot:
+      when: res.reboot_required

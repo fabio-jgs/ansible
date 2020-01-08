@@ -1,0 +1,23 @@
+---
+
+- name: Define access
+  #  include_vars: /vars/main.yml
+  set_fact:
+    provider:
+      host: "{{ ansible_host }}"
+      username: "{{ creds['username'] }}"
+      password: "{{ creds['password'] }}"
+      auth_pass: "{{ creds['auth_pass'] }}"
+
+- name: show running-config
+  ios_command:
+    provider: "{{ provider }}"
+    commands:
+      - show run
+  register: config
+
+- name: save output /root/ansible/infra-ansible/roles/bkp.switchs/cisco 
+  copy:
+    content: "{{ config.stdout[0] }}"
+    dest: "/root/ansible/infra-ansible/roles/bkp.switchs/cisco/{{ ansible_host }}.config"
+# tasks file for bkp.switchs

@@ -1,0 +1,11 @@
+[b302]
+172.16.1.212
+
+[b302:vars]
+#ansible_user=administrador
+ansible_user=ansible
+#ansible_password=#l4bs$1fsc
+ansible_password=An$1BL3*GW
+ansible_connection=winrm
+ansible_winrm_server_cert_validation=ignore
+

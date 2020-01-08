@@ -1,0 +1,19 @@
+- name: Tarefa para desligar os computadores as 23h - Windows
+  win_scheduled_task:
+    name: desliga
+    description: Desligar as 23h
+    actions:
+    - path: shutdown.exe
+      arguments: -s -f -t 0
+    triggers:
+    - type: daily
+      start_boundary: '11:15:00'
+    username: SYSTEM
+    state: present
+    enabled: yes
+  when: ansible_os_family == 'Windows'
+
+- name: Altera plano de energia para alto desempenho (não hiberna)
+  win_power_plan:
+          name: alto desempenho
+  when: ansible_os_family == 'Windows'

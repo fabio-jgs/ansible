@@ -1,0 +1,5 @@
+---
+ntpsrv: "{{ groups['ntp_server'][0] }}"
+fname: "{{ 'ntp_server' if 'ntp_server' in group_names else 'ntp_client' }}"
+#vars file for ntp
+#

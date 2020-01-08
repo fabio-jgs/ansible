@@ -1,0 +1,11 @@
+[windows]
+192.168.15.18
+
+[windows:vars]
+#ansible_user=administrador
+ansible_user=fabio
+#ansible_password=#l4bs$1fsc
+ansible_password=fabio
+ansible_connection=winrm
+ansible_winrm_server_cert_validation=ignore
+

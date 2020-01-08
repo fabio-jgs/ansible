@@ -1,0 +1,29 @@
+# {{ ansible_managed }}
+
+agentAddress {{ snmpd_agent_address | join(',') }}
+
+#view systemonly included .1.3.6.1.2.1.1
+#view systemonly included .1.3.6.1.2.1.25.1
+
+
+#rocommunity gwmonitorpub  default    -V systemonly
+rocommunity gwmonitorpub 
+rouser authOnlyUser
+
+sysLocation {{ snmpd_sys_location }}
+sysContact  {{ snmpd_sys_contact }}
+sysDescr  {{ snmpd_sys_description }}
+
+sysServices 72
+
+iquerySecName internalUser
+rouser        internalUser
+
+
+defaultMonitors         {{ 'yes' if snmpd_default_monitors else 'no' }}
+
+{% for snmpd_extension in snmpd_extensions | default([]) %}
+extend {{ snmpd_extension.name }} {{ snmpd_extension.prog }} {{ snmpd_extension.args | default([]) | join(' ') }}
+{% endfor %}
+
+master agentx

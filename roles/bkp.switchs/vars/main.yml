@@ -1,0 +1,6 @@
+---
+creds:
+  username: ansible
+  password: ctic$ansi*ble*
+  auth_pass: ctic$ansi*ble* 
+# vars file for bkp.switchs1

@@ -1,0 +1,9 @@
+---
+- name: Configure centralized syslog
+  lineinfile:
+    path: /etc/rsyslog.d/99-graylog.conf
+    line: '*.* @10.40.0.45:1515;RSYSLOG_SyslogProtocol23Format'
+    insertafter: EOF
+    create: yes
+  notify:
+    - Restart Rsyslog
