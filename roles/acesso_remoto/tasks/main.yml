@@ -1,0 +1,32 @@
+#Windows  
+
+- name: Instalar o ultravnc - Windows
+  win_chocolatey:
+    name: ultravnc
+    state: latest
+  when: ansible_os_family == 'Windows'
+
+  #- name: Criar a pasta do UltraVNC - Windows
+#  win_file:
+#    path: C:\Program Files\uvnc bvba\UltraVnc
+#    state: directory
+#  when: ansible_os_family == 'Windows'
+#
+- name: Copia o arquivo de configuracao do UltraVNC - Windows
+  win_copy:
+    src: ultravnc.ini
+    dest: C:\Program Files\uvnc bvba\UltraVnc\ultravnc.ini
+  when: ansible_os_family == 'Windows'
+
+- name: Libera porta 5900 UltraVNC Firewall - Windows  
+  win_firewall_rule:
+    name: OpenVNC
+    localport: 5900
+    action: allow
+    direction: in
+    protocol: tcp
+    state: present
+    enabled: yes
+  when: ansible_os_family == 'Windows'
+
+

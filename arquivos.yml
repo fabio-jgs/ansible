@@ -1,0 +1,10 @@
+- hosts: windows
+  tasks:
+  - name: Ansible check file exists example.
+    stat:
+            path: c:\ansible\ans.ps1
+    register: file_details
+
+  - debug:
+      msg: "The file or directory exists"
+    when: file_details.stat.exists

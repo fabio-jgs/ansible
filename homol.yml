@@ -1,0 +1,19 @@
+- hosts: windows
+  roles:
+    - acesso_remoto
+  #  tasks:
+  #  - win_chocolatey:
+  #          name: 
+  #          - pdfsam.install
+              #            install_args:
+              #      - /ExtensionPack
+              #          state: present
+
+            #    - name: Change the hostname to sample-hostname
+            #      win_hostname:
+            #        name: somente-teste
+            #      register: res
+
+            #    - name: Reboot
+            #      win_reboot:
+            #      when: res.reboot_required

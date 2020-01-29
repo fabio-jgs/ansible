@@ -13,12 +13,28 @@
         - firefox
         - 7zip.install
         - notepadplusplus.install
-        - vlc
+        - vlc # player de video
         - winscp.portable
-        - cutepdf
-        - foxitreader
-
+        - ghostscript.app  # base para cutepdf
+        - cutepdf # impressora PDF
+        - foxitreader # leitor PDF
+        - codeblocks
+        - geogebra-classic.install
+        - scilab
+        - python
+        - scenebuilder9  
+        - r
+        - r.studio  
+        - virtualbox
+        - virtualbox-guest-additions-guest.install
+        - winmerge 
+        - k-litecodecpackmega # pacote de drivers
+        - gimp # editor de imagens
+        - inkscape  #editor de vetores
+        - vscode
+        - pdfsam.install # unir PDF 
         state: present
+
     - win_chocolatey:
             name: pdfxchangeeditor
             install_args: 
@@ -35,11 +51,11 @@
             name: cmaptools
             state: present
 
-    - name: Change the hostname to sample-hostname
-      win_hostname:
-        name: somente-teste
-      register: res
+            #    - name: Change the hostname to sample-hostname
+            #      win_hostname:
+            #        name: somente-teste
+            #      register: res
 
-    - name: Reboot
-      win_reboot:
-      when: res.reboot_required
+            #    - name: Reboot
+            #      win_reboot:
+            #      when: res.reboot_required
