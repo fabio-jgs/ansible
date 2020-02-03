@@ -1,6 +1,6 @@
-- hosts: windows
-  roles:
-    - acesso_remoto
+- hosts: administrativos
+  #roles:
+    #- acesso_remoto
   #  tasks:
   #  - win_chocolatey:
   #          name: 
@@ -17,3 +17,8 @@
             #    - name: Reboot
             #      win_reboot:
             #      when: res.reboot_required
+  tasks:
+    - win_msg:
+        display_seconds: 60
+        msg: teste
+  

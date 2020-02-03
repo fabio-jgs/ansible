@@ -1,11 +1,18 @@
-[windows]
+[dam]
 192.168.15.19
 
-[windows:vars]
+[administrativos:children]
+dam
+
+#[administrativos:vars]
 #ansible_user=administrador
-ansible_user=fabio
+#ansible_user=fabio
+#ansible_user="{{ ansible_user_labs }}"
 #ansible_password=#l4bs$1fsc
-ansible_password=fabio
-ansible_connection=winrm
-ansible_winrm_server_cert_validation=ignore
+#ansible_password=fabio
+#ansible_password="{{ ansible_password_labs }}
+#ansible_connection=winrm
+#ansible_winrm_server_cert_validation=ignore
+
+
 

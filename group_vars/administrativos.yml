@@ -1,0 +1,19 @@
+#[administrativos:vars]
+#ansible_user=administrador
+#ansible_user: fabio
+#ansible_user="{{ ansible_user_labs }}"
+#ansible_password=#l4bs$1fsc
+#ansible_password: fabio
+#ansible_password="{{ ansible_password_labs }}
+ansible_connection: winrm
+ansible_winrm_server_cert_validation: ignore
+
+ansible_user: fabio
+#ansible_password: fabio
+ansible_password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          62346564646263373263616161386162336530613163663663313064366661323663363435383961
+          3830356638376538373033666133656561643863363363320a633434306532376365656566306230
+          33396137303866316434336132303634313262666638376162633535646331633734333135613932
+          3731653935663361390a333566626330386330363438663962383635393362336238626636653962
+          3332
